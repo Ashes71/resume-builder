@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i*nyr8ys4vuq0zedyqdh92nh96-e)*5q@d1$vq*i&1zh=iot1+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['free-resume-builder.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['free-resume-builder.herokuapp.com','127.0.0.1']
 
 
 # Application definition
