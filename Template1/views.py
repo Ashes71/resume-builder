@@ -76,8 +76,8 @@ def Template1(request):
             draw.text((x1 + 50, y1 -20), languages[m], font=font3, fill="black")
             x1 += 250
         img.save('static/resume.pdf')
-
-        return render(request,'pdf.html')
+        request= PDF(request)
+        return request
 
 
     else:
@@ -86,5 +86,6 @@ def Template1_About(request):
     return render(request,"About.html")
 def Template1_Contact_Us(request):
     return render(request,"Contact_Us.html")
-
+def PDF(request):
+    return render(request,"pdf.html")
 
