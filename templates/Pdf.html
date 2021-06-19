@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pdf</title>
+</head>
+<body>
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
+  <center>Your Resume is Generated 🙂🙂 </center>
+  {% csrf_token%}
+  {%load static%}
+  <iframe src="{%static 'resume.pdf'%} " frameborder="0"></iframe>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+</body>
+</html>

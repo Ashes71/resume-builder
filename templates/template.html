@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+  <head>
+       <meta charset="utf-8">
+    <title>Free Resume Builder-Template</title>
+    <link rel="stylesheet"  href="{% static 'styles/template_stylesheet.css'%}">
+  </head>
+
+  <body>
+
+    <div class="header" >
+           <div class="header-logo">11<sup>th</sup> Hour-Free Resume Builder</div>
+
+              <div class="header-list">
+
+                <ul>
+          <li><a target="_blank" href="Template1/Template1_About">About</a></li>
+          <li><a target="_blank" href="Template1/Template1_Contact_Us">Contact Us</a></li>
+                </ul>
+              </div>
+
+            </div>
+  
+    <form action= " " method="POST" >
+    {% csrf_token%}
+        <div class="personal-details" >
+
+             <div><label for="name">Name</label><br>
+             <input type="text" id="name" name="name" placeholder="Enter your name" required="required"></div><br>
+
+             <div><label for="email">Email</label><br>
+             <input type="email" id="name" name="email" placeholder="Enter your Email" required="required"></div></br>
+
+             <div><label for="mobile">Mobile number</label><br>
+             <input type="text" id="name" name="mobile" placeholder="Enter your Mobile number" required="required"></div></br>   
+
+             <label for="location">Location</label><br>
+             <input type="text" id="name" name="location" placeholder="Enter your city, country(ex: chennai,India)" required="required"></br>
+
+             </div> <hr>
+
+             <div class="career"><label for="career objective">Career Objective</label><br>
+             <textarea id="career objective" rows="2" cols="50" name="carrer_objective" placeholder="Enter your job objective.(max 300words)" required="required"></textarea></div></br> <hr>
+        <p>Use Abbreviation if school name is very big!!</p>
+             {% for count in "123" %}
+             <div class="educational-details">
+                   <div class="column1">
+                         <label for="name">School/College Name</label><br>
+                         <input type="text" id="column1" name="school{{count}}" placeholder="School/college Name" required="required"></div><br>
+                   <div class="column2">
+                         <label for="name">Class/Degree</label><br>
+                         <input type="text" id="column2" name="class{{count}}" placeholder="Class/Degree" required="required"></div><br>
+                
+
+                   <div class="column3">
+                         <label for="name">Year of passing</label><br>
+                         <input type="text" id="column3" name="year{{count}}" placeholder="(mention only year)" required="required"></div><br>
+                
+
+                   <div class="column4">
+                         <label for="percentage">Percentage/CGPA</label><br>
+                         <input type="text" id="column4" name="marks{{count}}" placeholder="Percentage/Gpa" required="required"></div><br>
+
+             </div><hr>
+            {% endfor %}
+
+                 <div class="skills">
+                    <label for="skills">Skills</label><br>
+                    <textarea id="skills" rows="2" cols="50" name="skills" placeholder="Skills(enter skills separated by ',')" required="required"></textarea>
+                 </div><br><hr>
+
+                    <div class="key-projects"><label for="Key Projects/Presentation">Key Projects/Presentation</label><br>
+                    <textarea id="Key Projects/Presentation" name='projects' rows="2" cols="50"  placeholder="Key Projects/Presentation(separate by ',' )" required="required"></textarea></div></br><hr>
+
+                    <div class="achievements"><label for="achievements">Achievements</label><br>
+                    <textarea id="achievements" rows="2" cols="50" name="achievements"  placeholder="achievements(separate by ',' and enter only 2-3 achievements)" required="required"></textarea></div></br> <hr>
+
+                    <div class="languages"><label for="languages">Languages Known</label><br>
+                    <textarea id="languages" rows="1" cols="50" name="languages" placeholder="languages(separate by ',')" required="required"></textarea></div></br> <hr>
+
+                     <input class="contact-submit" type="submit" value="SUBMIT">
+    
+
+
+
+
+    </form>
+  
+  </body>
+</html>

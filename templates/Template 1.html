@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template1</title>
+</head>
+<body>
+   <h1>Template1</h1>
+    <form action= " " method="POST">
+    {% csrf_token%}
+    <input type="text" name="user_name" placeholder="Name" required="required"><br>
+        <hr>
+         <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- 
+/*
+ *	This content is generated from the PSD File Info.
+ *	(Alt+Shift+Ctrl+I).
+ *
+ *	@desc 		
+ *	@file 		v10 logo
+ *	@date 		
+ *	@title 		
+ *	@author 	
+ *	@keywords 	
+ *	@generator 	Export Kit v1.2.8
+ *
+*/
+ -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+	<head>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+		<title>v10 logo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="" >
+		<link rel="StyleSheet" href="v10 logo.css" />
+		<script src="http://exportkit.com/cdn/js/ek-googlefont-autoloader-v2-min.js"></script>
+		<!-- Add your custom HEAD content here -->
+
+	</head>
+	<body>
+		<div id="content-container" >
+
+			<div id="layer_1"  >
+				<div id="bg"  ></div>
+				<img src="../skins/v10 logo/triangle.png" id="triangle" />
+				<div id="layer_1_1" >
+					1
+				</div>
+				<img src="../skins/v10 logo/thunder.png" id="thunder" />
+				<div id="layer_1_2" >
+					0
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+</html>
