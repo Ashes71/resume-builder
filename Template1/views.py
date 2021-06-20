@@ -6,7 +6,6 @@ import smtplib
 import textwrap3
 from email.message import EmailMessage
 import imghdr
-from xhtml2pdf import pisa
 def Template1(request):
     if request.method=='POST':
         data=request.POST
