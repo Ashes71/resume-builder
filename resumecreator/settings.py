@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY',default=" ")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool,default=True)
@@ -130,8 +130,8 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = config('EMAIL_HOST', default='localhost')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', )
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', )
+EMAIL_PORT = config('EMAIL_PORT',default=25, cast=int)
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD',default='your password' )
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='your mail id ')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
