@@ -4,4 +4,4 @@ from django.shortcuts import render
 def About(request):
     return render(request,"About.html")
 def Contact_Us(request):
-    return render(request,"Contact_us.html")
+    return render(request,"Contact_Us.html")
