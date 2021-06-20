@@ -99,7 +99,7 @@ def Template1(request):
         msg.set_content(gmail_content)
         f = open(filename, 'rb')
         fdata = f.read()
-        fname = str(data["name"].replace(" ", "")) + '.pdf'
+        fname = 'Resume_ '+str(data["name"].replace(" ", "")) + '.pdf'
         file_type = imghdr.what(f.name)
         msg.add_attachment(fdata, maintype='application', subtype='octet-stream', filename=fname)
         s.send_message(msg)
