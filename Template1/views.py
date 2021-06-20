@@ -1,7 +1,5 @@
 from django.shortcuts import render,redirect
 from PIL import Image,ImageDraw, ImageFont
-from django.http import HttpResponse
-from django.template.loader import get_template
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 import smtplib
@@ -9,7 +7,6 @@ import textwrap3
 from email.message import EmailMessage
 import imghdr
 from xhtml2pdf import pisa
-# Create your views here.
 def Template1(request):
     if request.method=='POST':
         data=request.POST
@@ -82,11 +79,6 @@ def Template1(request):
             draw.text((x1 + 50, y1 -20), languages[m].strip(), font=font3, fill="black")
             x1 += 250
         img.save('static/resume.pdf')
-        #send an email
-
-       # img.save('static/' + str(data["name"].replace(" ", "")) + '.pdf')
-
-        #  Variable Initialization
         filename = 'static/resume.pdf'
         gmail_id = settings.EMAIL_HOST_USER
         gmail_subject = 'Resume PDF'
@@ -97,30 +89,22 @@ def Template1(request):
         Regards,
         V_10
         """
-
         s = smtplib.SMTP("smtp.gmail.com", 587)
-        s.starttls()  # Traffic encryption
+        s.starttls()  
         s.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-
         msg = EmailMessage()
         msg['Subject'] = gmail_subject
         msg['From'] = gmail_id
         msg['To'] = data['email']
         gmail_content = gmail_content.replace("<name>", data['name'])
         msg.set_content(gmail_content)
-
-        # Attaching the Poster
         f = open(filename, 'rb')
         fdata = f.read()
-        # fname = 'images/' + CertificateFileName
         fname = str(data["name"].replace(" ", "")) + '.pdf'
-
         file_type = imghdr.what(f.name)
         msg.add_attachment(fdata, maintype='application', subtype='octet-stream', filename=fname)
         s.send_message(msg)
         s.quit()
-
-
         return render(request, 'Pdf.html')
 
 
