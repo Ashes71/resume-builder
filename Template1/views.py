@@ -2,7 +2,13 @@ from django.shortcuts import render,redirect
 from PIL import Image,ImageDraw, ImageFont
 from django.http import HttpResponse
 from django.template.loader import get_template
+from django.core.mail import send_mail, EmailMessage
+from django.conf import settings
+import smtplib
 import textwrap3
+from email.message import EmailMessage
+import imghdr
+from xhtml2pdf import pisa
 # Create your views here.
 def Template1(request):
     if request.method=='POST':
@@ -49,7 +55,7 @@ def Template1(request):
         y1 += 200
         for i in range(len(skills)):
             draw.rectangle((x1, y1, x1 + 15, y1 + 15), fill="black")
-            draw.text((x1 + 50, y1 - 20), skills[i], font=font3, fill="black")
+            draw.text((x1 + 50, y1 - 20), skills[i].strip(), font=font3, fill="black")
             y1 += 50
         draw.line((0, y1 + 50, img.size[0], y1 + 50), fill="grey", width=3)
         projects = data['projects'].split(',')
@@ -57,7 +63,7 @@ def Template1(request):
         y1 = y1 + 250
         for k in range(len(projects)):
             draw.rectangle((x1, y1, x1 + 15, y1 + 15), fill="black")
-            draw.text((x1 + 50, y1 - 20), projects[k], font=font3, fill="black")
+            draw.text((x1 + 50, y1 - 20), projects[k].strip(), font=font3, fill="black")
             y1 += 60
         draw.line((0, y1 + 50, img.size[0], y1 + 50), fill="grey", width=3)
         draw.text((x1 - 50, y1 + 100), "Achievements", font=font2, fill="black")
@@ -65,7 +71,7 @@ def Template1(request):
         y1 = y1 + 250
         for l in range(len(Achievements)):
             draw.rectangle((x1, y1, x1 + 15, y1 + 15), fill="black")
-            draw.text((x1 + 50, y1-20 ), Achievements[l], font=font3, fill="black")
+            draw.text((x1 + 50, y1-20 ), Achievements[l].strip(), font=font3, fill="black")
             y1 += 50
         draw.line((0, y1 + 50, img.size[0], y1 + 50), fill="grey", width=3)
         draw.text((x1 - 50, y1 + 100), "Languages Known", font=font2, fill="black")
@@ -73,11 +79,50 @@ def Template1(request):
         y1 = y1 + 250
         for m in range(len(languages)):
             draw.rectangle((x1, y1, x1 + 15, y1 + 15), fill="black")
-            draw.text((x1 + 50, y1 -20), languages[m], font=font3, fill="black")
+            draw.text((x1 + 50, y1 -20), languages[m].strip(), font=font3, fill="black")
             x1 += 250
         img.save('static/resume.pdf')
-        request= PDF(request)
-        return request
+        #send an email
+
+       # img.save('static/' + str(data["name"].replace(" ", "")) + '.pdf')
+
+        #  Variable Initialization
+        filename = 'static/resume.pdf'
+        gmail_id = settings.EMAIL_HOST_USER
+        gmail_subject = 'Resume PDF'
+        gmail_content = """
+        Hello <name>, 
+        Thank you for choosing this service to make your resume. Good luck for your interview.
+
+        Regards,
+        V_10
+        """
+
+        s = smtplib.SMTP("smtp.gmail.com", 587)
+        s.starttls()  # Traffic encryption
+        s.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+
+        msg = EmailMessage()
+        msg['Subject'] = gmail_subject
+        msg['From'] = gmail_id
+        msg['To'] = data['email']
+        gmail_content = gmail_content.replace("<name>", data['name'])
+        msg.set_content(gmail_content)
+
+        # Attaching the Poster
+        f = open(filename, 'rb')
+        fdata = f.read()
+        # fname = 'images/' + CertificateFileName
+        fname = str(data["name"].replace(" ", "")) + '.pdf'
+
+        file_type = imghdr.what(f.name)
+        msg.add_attachment(fdata, maintype='application', subtype='octet-stream', filename=fname)
+        s.send_message(msg)
+        s.quit()
+
+
+        return render(request, 'Pdf.html')
+
 
 
     else:
@@ -86,6 +131,4 @@ def Template1_About(request):
     return render(request,"About.html")
 def Template1_Contact_Us(request):
     return render(request,"Contact_Us.html")
-def PDF(request):
-    return render(request,"pdf.html")
 
