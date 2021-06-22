@@ -13,13 +13,14 @@ def Template1(request):
         img = Image.open("images/11th hr template-01.png").convert("RGB")
         loc1w=1829
         loc1h=450
-        uploadfile=request.FILES['document']
-        fs=FileSystemStorage()
-        #fs.save(uploadfile.name,uploadfile)
-        imgpath=fs.save(uploadfile.name,uploadfile)
-        imgname=fs.url(imgpath).removeprefix('/')
-        image1=Image.open(imgname).resize((413,531))
-        img.paste(image1,(loc1w,loc1h,loc1w+413,loc1h+531))
+        if request.FILES:
+            uploadfile=request.FILES['document']
+            fs=FileSystemStorage()
+            #fs.save(uploadfile.name,uploadfile)
+            imgpath=fs.save(uploadfile.name,uploadfile)
+            imgname=fs.url(imgpath).removeprefix('/')
+            image1=Image.open(imgname).resize((413,531))
+            img.paste(image1,(loc1w,loc1h,loc1w+413,loc1h+531))
         pics = ['images/maps1.png', 'images/phone1.png', 'images/email1.png']
         x = 190
         y = 550
