@@ -51,6 +51,7 @@ li {
 .column1, .column2, .column3, .column4{
   padding-right: 15px;
 }
+
 .skills{
   padding: 40px 40px;
   color: #fff;
@@ -58,6 +59,7 @@ li {
   background: #26d074;
   font-size: 20px;
 }
+
 .key-projects{
   padding: 40px 40px;
   color: #fff;
@@ -84,7 +86,38 @@ li {
 
 #name, #sc {
     border-radius: 5px;
-    padding: 20px; 
+    padding: 20px;
     width: 200px;
     height: 8px;
+}
+
+.image-input{
+  padding: 40px 40px;
+  color: #fff;
+  font-family: bahnschrift;
+  background: #26d074;
+  font-size: 20px;
+}
+
+.image-input span{
+  color: #fff;
+  font-family: bahnschrift;
+  font-size: 14px;
+}
+
+.contact-submit{
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  border: 2px solid #2682d0; /* Green */
+  transition-duration: 0.4s
+}
+
+.contact-submit:hover {
+  background-color: #2682d0; /* Green */
+  color: white;
 }
